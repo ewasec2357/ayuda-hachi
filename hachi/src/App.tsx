@@ -6,10 +6,13 @@ import { Transparencia } from './components/Transparencia';
 import { Galeria } from './components/Galeria';
 import { OtrasFormasDeAyudar } from './components/OtrasFormasDeAyudar';
 import { Footer } from './components/Footer';
+import { FloatingActions } from './components/FloatingActions';
+import { Preloader } from './components/Preloader';
 
 export function App() {
   return (
     <>
+      <Preloader />
       <Hero />
       <main>
         <EstadoClinico />
@@ -20,6 +23,7 @@ export function App() {
         <OtrasFormasDeAyudar />
       </main>
       <Footer />
+      <FloatingActions />
     </>
   );
 }

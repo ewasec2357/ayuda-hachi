@@ -37,6 +37,43 @@ const fotos: Foto[] = [
   },
 ];
 
+function TarjetaFoto({
+  foto,
+  i,
+  onAbrir,
+  duplicada = false,
+}: {
+  foto: Foto;
+  i: number;
+  onAbrir: (foto: Foto) => void;
+  duplicada?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onAbrir(foto)}
+      aria-hidden={duplicada || undefined}
+      tabIndex={duplicada ? -1 : 0}
+      className="group relative w-60 shrink-0 overflow-hidden rounded-lg border-2 border-papel shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa sm:w-72"
+    >
+      <picture>
+        <source srcSet={`${foto.src}.webp`} type="image/webp" />
+        <img
+          src={`${foto.src}.jpg`}
+          alt={foto.alt}
+          width={foto.src.includes('hachi-07') ? 1600 : 1200}
+          height={foto.src.includes('hachi-07') ? 1200 : 1600}
+          loading={i === 0 && !duplicada ? undefined : 'lazy'}
+          className="aspect-[3/4] h-full w-full object-cover"
+        />
+      </picture>
+      <span className="absolute inset-x-0 bottom-0 bg-rosa-oscuro/90 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-hueso opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+        VMT · LIMA · RESCATE
+      </span>
+    </button>
+  );
+}
+
 export function Galeria() {
   const fade = useFadeUpOnScroll<HTMLElement>();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -53,35 +90,21 @@ export function Galeria() {
   }
 
   return (
-    <section id="galeria" ref={fade.ref} className={`bg-hueso px-6 py-16 md:py-24 ${fade.className}`}>
-      <div className="mx-auto max-w-5xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-tinta/60">Galería</p>
+    <section id="galeria" ref={fade.ref} className={`relative overflow-hidden bg-hueso px-6 py-16 md:py-24 ${fade.className}`}>
+      <div className="pointer-events-none absolute -right-16 bottom-0 h-40 w-40 bg-lima-claro blob-1 md:h-56 md:w-56" />
+      <div className="relative mx-auto max-w-5xl">
+        <p className="font-mono text-xs uppercase tracking-widest text-rosa-oscuro">Galería</p>
         <h2 className="mt-2 font-display text-3xl text-tinta md:text-4xl">HACHI, antes y en tratamiento</h2>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3">
-          {fotos.map((foto, i) => (
-            <button
-              key={foto.src}
-              type="button"
-              onClick={() => abrir(foto)}
-              className="group relative border border-tinta/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ambar"
-            >
-              <picture>
-                <source srcSet={`${foto.src}.webp`} type="image/webp" />
-                <img
-                  src={`${foto.src}.jpg`}
-                  alt={foto.alt}
-                  width={foto.src.includes('hachi-07') ? 1600 : 1200}
-                  height={foto.src.includes('hachi-07') ? 1200 : 1600}
-                  loading={i === 0 ? undefined : 'lazy'}
-                  className="aspect-[3/4] h-full w-full object-cover"
-                />
-              </picture>
-              <span className="absolute inset-x-0 bottom-0 bg-tinta/70 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-hueso opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-                VMT · LIMA · RESCATE
-              </span>
-            </button>
-          ))}
+        <div className="mt-10 overflow-hidden">
+          <div className={`gallery-track flex w-max gap-4 ${activa ? 'gallery-paused' : ''}`}>
+            {fotos.map((foto, i) => (
+              <TarjetaFoto key={foto.src} foto={foto} i={i} onAbrir={abrir} />
+            ))}
+            {fotos.map((foto, i) => (
+              <TarjetaFoto key={`${foto.src}-dup`} foto={foto} i={i} onAbrir={abrir} duplicada />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -103,7 +126,7 @@ export function Galeria() {
             </button>
             <picture>
               <source srcSet={`${activa.src}.webp`} type="image/webp" />
-              <img src={`${activa.src}.jpg`} alt={activa.alt} className="h-auto w-full" />
+              <img src={`${activa.src}.jpg`} alt={activa.alt} className="h-auto w-full rounded-lg" />
             </picture>
             <figcaption className="mt-2 font-mono text-xs text-hueso/80">{activa.alt}</figcaption>
           </figure>
