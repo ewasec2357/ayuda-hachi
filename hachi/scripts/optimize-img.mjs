@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
-const SRC_DIR = path.resolve('public/img/original');
+const SRC_DIR = path.resolve('assets-src/original');
 const OUT_DIR = path.resolve('public/img');
 const MAX_WIDTH = 1600;
 const HERO_SOURCE = 'hachi-07-clinica-descanso';

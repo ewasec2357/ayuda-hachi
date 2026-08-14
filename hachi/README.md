@@ -24,7 +24,7 @@ Después de editar `campana.ts`, corre `npm run check:datos` y compara la salida
 
 ## Reemplazar fotos
 
-1. Coloca las fotos nuevas en `public/img/original/` (cualquier `.jpg`/`.jpeg`/`.png`).
+1. Coloca las fotos nuevas en `assets-src/original/` (cualquier `.jpg`/`.jpeg`/`.png`).
 2. Corre `npm run optimize:img` — genera versiones `.jpg` + `.webp` redimensionadas (máx. 1600px de ancho) en `public/img/`, y regenera `public/og-image.jpg` a partir de `hachi-07-clinica-descanso.*`.
 3. Si agregas/quitas fotos de la galería, actualiza el arreglo `fotos` en `src/components/Galeria.tsx` (cada una necesita su propio `alt` real, no genérico).
 
