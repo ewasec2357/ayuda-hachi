@@ -14,15 +14,11 @@ export function useFadeUpOnScroll<T extends HTMLElement>() {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
+    // No se desconecta tras el primer disparo: la sección debe volver a
+    // aparecer (fade-up) cada vez que reingresa al viewport, no solo una vez.
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {
+      threshold: 0.15,
+    });
     observer.observe(node);
     return () => observer.disconnect();
   }, []);

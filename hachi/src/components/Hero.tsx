@@ -21,7 +21,7 @@ export function Hero() {
     }
 
     const observer = new IntersectionObserver(([entry]) => setBarraVisible(entry.isIntersecting), {
-      threshold: 0.3,
+      threshold: 0.1,
     });
     observer.observe(node);
     return () => observer.disconnect();
@@ -106,7 +106,7 @@ export function Hero() {
       </div>
 
       {campana.meta.porcentaje !== null && (
-        <div className="relative mx-auto mt-10 max-w-2xl px-2">
+        <div ref={barraRef} className="relative mx-auto mt-10 max-w-2xl px-2">
           <div className="rounded-lg bg-papel p-6 shadow-soft sm:p-8">
             <p className="text-center font-mono text-xs uppercase tracking-widest text-rosa-oscuro">
               Meta de donaciones
@@ -115,10 +115,7 @@ export function Hero() {
               HACHI NECESITA NUESTRA AYUDA
             </p>
 
-            <div
-              ref={barraRef}
-              className="relative mt-5 h-7 w-full overflow-hidden rounded-full border-2 border-tinta/10 bg-hueso sm:h-8"
-            >
+            <div className="relative mt-5 h-7 w-full overflow-hidden rounded-full border-2 border-tinta/10 bg-hueso sm:h-8">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-rosa to-rosa-oscuro transition-[width] duration-[1500ms] ease-out"
                 style={{ width: `${barraVisible ? Math.min(100, objetivoPorcentaje) : 0}%` }}
