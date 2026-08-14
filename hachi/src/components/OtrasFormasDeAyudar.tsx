@@ -65,7 +65,7 @@ export function OtrasFormasDeAyudar() {
               Alimento, medicamentos, pañales o mantas. Coordina la entrega por el canal de WhatsApp.
             </p>
             <a
-              href={campana.contacto.canalWhatsapp.url}
+              href={`https://wa.me/${campana.contacto.whatsappDirecto}`}
               target="_blank"
               rel="noreferrer"
               className="mt-4 inline-block font-mono text-xs uppercase tracking-wide text-tinta underline underline-offset-4 hover:text-lima-oscuro"

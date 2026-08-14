@@ -113,15 +113,28 @@ export function ComoDonar() {
           <p className="font-body text-sm text-tinta/70">
             Todas las actualizaciones y comprobantes del caso se publican en el canal oficial de WhatsApp.
           </p>
-          <a
-            href={contacto.canalWhatsapp.url}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-tinta/15 px-5 py-3 font-mono text-sm uppercase tracking-wide text-tinta hover:border-rosa focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa"
-          >
-            <MessageCircle size={16} />
-            {contacto.canalWhatsapp.nombre}
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={contacto.canalWhatsapp.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-tinta/15 px-5 py-3 font-mono text-sm uppercase tracking-wide text-tinta hover:border-rosa focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa"
+            >
+              <MessageCircle size={16} />
+              {contacto.canalWhatsapp.nombre}
+            </a>
+            {contacto.whatsappDirecto && (
+              <a
+                href={`https://wa.me/${contacto.whatsappDirecto}?text=Hola,%20acabo%20de%20donar%20para%20HACHI`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-rosa-oscuro px-5 py-3 font-mono text-sm uppercase tracking-wide text-hueso hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2"
+              >
+                <MessageCircle size={16} />
+                Enviar comprobante
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </section>

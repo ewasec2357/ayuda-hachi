@@ -92,8 +92,9 @@ export const campana = {
     sinMetastasis: true,
   },
   meta: {
-    objetivo: null as number | null, // PENDIENTE_META_TOTAL — si es null, no se renderiza la barra
-    recaudado: null as number | null, // PENDIENTE_RECAUDADO
+    objetivo: null as number | null, // PENDIENTE_META_TOTAL (monto en soles) — aún no confirmado
+    recaudado: null as number | null, // PENDIENTE_RECAUDADO (monto en soles) — aún no confirmado
+    porcentaje: 10 as number | null, // % de la meta alcanzado, confirmado por la responsable — si es null, no se renderiza la barra
   },
   pagos: {
     titular: 'Valexa Rodríguez Romaldo',
@@ -116,7 +117,7 @@ export const campana = {
     },
   },
   contacto: {
-    whatsappDirecto: null as string | null, // PENDIENTE_WHATSAPP — omitir la UI si es null
+    whatsappDirecto: '922837643' as string | null, // confirmado por Valexa vía WhatsApp: es su wsp directo, se usa para "Dona en especie"
     canalWhatsapp: {
       nombre: 'UNIDOS POR HACHI',
       url: 'https://whatsapp.com/channel/0029VbDiu078KMqcXB4Z103a',
