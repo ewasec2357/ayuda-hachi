@@ -54,17 +54,33 @@ export function Hero() {
       </div>
 
       {campana.meta.porcentaje !== null && (
-        <div className="relative mx-auto mt-8 max-w-xl px-2 text-center">
-          <div className="h-3 w-full overflow-hidden rounded-full border border-tinta/10 bg-papel/60">
-            <div
-              className="h-full rounded-full bg-rosa"
-              style={{ width: `${Math.min(100, campana.meta.porcentaje)}%` }}
-            />
+        <div className="relative mx-auto mt-10 max-w-2xl px-2">
+          <div className="rounded-lg bg-papel p-6 shadow-soft sm:p-8">
+            <p className="text-center font-mono text-xs uppercase tracking-widest text-rosa-oscuro">
+              Meta de donaciones
+            </p>
+            <p className="mt-1 text-center font-display text-4xl text-tinta sm:text-5xl">
+              {campana.meta.porcentaje}%
+            </p>
+
+            <div className="relative mt-5 h-7 w-full overflow-hidden rounded-full border-2 border-tinta/10 bg-hueso sm:h-8">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-rosa to-rosa-oscuro transition-[width] duration-700 ease-out"
+                style={{ width: `${Math.min(100, campana.meta.porcentaje)}%` }}
+              />
+            </div>
+            <div className="mt-2 flex justify-between font-mono text-[11px] text-tinta/50 sm:text-xs">
+              <span>0%</span>
+              <span>25%</span>
+              <span>50%</span>
+              <span>75%</span>
+              <span>100%</span>
+            </div>
+
+            <p className="mt-4 text-center font-body text-xs text-tinta/60">
+              La información de donaciones se actualiza todos los días a las 12:00 a. m.
+            </p>
           </div>
-          <p className="mt-2 font-mono text-sm text-tinta">{campana.meta.porcentaje}% de la meta alcanzada</p>
-          <p className="mt-1 font-body text-xs text-tinta/60">
-            La información de donaciones se actualiza todos los días a las 12:00 a. m.
-          </p>
         </div>
       )}
     </header>
