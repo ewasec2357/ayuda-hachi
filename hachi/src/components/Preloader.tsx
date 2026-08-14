@@ -37,7 +37,7 @@ export function Preloader() {
       <div className="flex h-20 w-20 items-center justify-center rounded-full bg-rosa-claro shadow-soft">
         <Dog size={40} className="text-rosa-oscuro" strokeWidth={1.75} />
       </div>
-      <p className="font-display text-2xl text-tinta">Ayudemos a HACHI</p>
+      <p className="font-display text-2xl text-tinta">Unidos por HACHI</p>
       <Loader2 size={28} className="animate-spin text-rosa-oscuro motion-reduce:animate-none" />
     </div>
   );
