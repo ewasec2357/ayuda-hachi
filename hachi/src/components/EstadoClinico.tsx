@@ -14,7 +14,7 @@ export function EstadoClinico() {
   return (
     <section id="estado" ref={fade.ref} className={`bg-hueso px-6 py-16 md:py-24 ${fade.className}`}>
       <div className="mx-auto max-w-5xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-tinta/50">Estado clínico</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-tinta/60">Estado clínico</p>
         <h2 className="mt-2 font-display text-3xl text-tinta md:text-4xl">Lo que le está pasando a HACHI</h2>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">

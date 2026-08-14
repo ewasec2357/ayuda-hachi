@@ -9,7 +9,7 @@ function CopyField({ label, value, note }: { label: string; value: string; note?
   return (
     <div className="flex items-center justify-between gap-4 border-b border-tinta/10 py-3 last:border-b-0">
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-widest text-tinta/50">{label}</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest text-tinta/60">{label}</p>
         <p ref={ref} className="select-all font-mono text-lg text-tinta">
           {value}
         </p>
@@ -28,7 +28,7 @@ export function ComoDonar() {
   return (
     <section id="donar" ref={fade.ref} className={`bg-hueso px-6 py-16 md:py-24 ${fade.className}`}>
       <div className="mx-auto max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-tinta/50">Cómo donar</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-tinta/60">Cómo donar</p>
         <h2 className="mt-2 font-display text-3xl text-tinta md:text-4xl">Ayuda directa a su tratamiento</h2>
 
         <div className="mt-10 space-y-8">

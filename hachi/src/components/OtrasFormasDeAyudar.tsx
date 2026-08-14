@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Share2, PawPrint, Radio } from 'lucide-react';
 import { campana } from '../data/campana';
 import { useFadeUpOnScroll } from '../hooks/useFadeUpOnScroll';
 
+type CompartirStatus = 'idle' | 'copiado';
+
 export function OtrasFormasDeAyudar() {
   const fade = useFadeUpOnScroll<HTMLElement>();
+  const [compartirStatus, setCompartirStatus] = useState<CompartirStatus>('idle');
 
   async function compartir() {
     const shareData = {
@@ -21,6 +25,8 @@ export function OtrasFormasDeAyudar() {
     }
     try {
       await navigator.clipboard.writeText(shareData.url);
+      setCompartirStatus('copiado');
+      setTimeout(() => setCompartirStatus('idle'), 2000);
     } catch {
       // clipboard no disponible; sin backend no hay más fallback posible aquí
     }
@@ -29,7 +35,7 @@ export function OtrasFormasDeAyudar() {
   return (
     <section ref={fade.ref} className={`bg-papel px-6 py-16 md:py-24 ${fade.className}`}>
       <div className="mx-auto max-w-5xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-tinta/50">Otras formas de ayudar</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-tinta/60">Otras formas de ayudar</p>
         <h2 className="mt-2 font-display text-3xl text-tinta md:text-4xl">No todo es dinero</h2>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -44,7 +50,7 @@ export function OtrasFormasDeAyudar() {
               onClick={compartir}
               className="mt-4 font-mono text-xs uppercase tracking-wide text-tinta underline underline-offset-4 hover:text-ambar-texto"
             >
-              Compartir
+              {compartirStatus === 'copiado' ? 'Enlace copiado' : 'Compartir'}
             </button>
           </div>
 

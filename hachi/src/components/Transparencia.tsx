@@ -15,7 +15,7 @@ export function Transparencia() {
   return (
     <section id="transparencia" ref={fade.ref} className={`bg-papel px-6 py-16 md:py-24 ${fade.className}`}>
       <div className="mx-auto max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-tinta/50">Transparencia</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-tinta/60">Transparencia</p>
         <h2 className="mt-2 font-display text-3xl text-tinta md:text-4xl">De dónde viene y a dónde va</h2>
 
         <ol className="mt-10 space-y-4 border-l border-tinta/15 pl-6">

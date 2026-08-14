@@ -16,7 +16,7 @@ export function Tratamiento() {
   return (
     <section id="tratamiento" ref={fade.ref} className={`bg-papel px-6 py-16 md:py-24 ${fade.className}`}>
       <div className="mx-auto max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-tinta/50">Plan de tratamiento</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-tinta/60">Plan de tratamiento</p>
         <h2 className="mt-2 font-display text-3xl text-tinta md:text-4xl">El camino que tiene por delante</h2>
 
         <ol className="mt-10 space-y-6">

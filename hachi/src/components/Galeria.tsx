@@ -55,7 +55,7 @@ export function Galeria() {
   return (
     <section id="galeria" ref={fade.ref} className={`bg-hueso px-6 py-16 md:py-24 ${fade.className}`}>
       <div className="mx-auto max-w-5xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-tinta/50">Galería</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-tinta/60">Galería</p>
         <h2 className="mt-2 font-display text-3xl text-tinta md:text-4xl">HACHI, antes y en tratamiento</h2>
 
         <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3">
