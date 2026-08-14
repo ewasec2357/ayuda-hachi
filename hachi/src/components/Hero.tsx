@@ -37,6 +37,22 @@ export function Hero() {
               Ver su historia clínica
             </a>
           </div>
+          {campana.meta.objetivo !== null && campana.meta.recaudado !== null && (
+            <div className="mt-6 max-w-xl">
+              <p className="font-mono text-xs text-hueso/90">
+                S/ {campana.meta.recaudado.toLocaleString('es-PE')} recaudado · meta S/{' '}
+                {campana.meta.objetivo.toLocaleString('es-PE')}
+              </p>
+              <div className="mt-2 h-2 w-full overflow-hidden rounded-full border border-hueso/30 bg-hueso/10">
+                <div
+                  className="h-full rounded-full bg-ambar"
+                  style={{
+                    width: `${Math.min(100, (campana.meta.recaudado / campana.meta.objetivo) * 100)}%`,
+                  }}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <ClinicalTicker />
