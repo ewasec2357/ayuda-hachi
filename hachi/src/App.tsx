@@ -9,15 +9,17 @@ import { Footer } from './components/Footer';
 
 export function App() {
   return (
-    <main>
+    <>
       <Hero />
-      <EstadoClinico />
-      <Tratamiento />
-      <ComoDonar />
-      <Transparencia />
-      <Galeria />
-      <OtrasFormasDeAyudar />
+      <main>
+        <EstadoClinico />
+        <Tratamiento />
+        <ComoDonar />
+        <Transparencia />
+        <Galeria />
+        <OtrasFormasDeAyudar />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
