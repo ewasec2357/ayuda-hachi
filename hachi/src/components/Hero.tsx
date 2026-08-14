@@ -59,8 +59,8 @@ export function Hero() {
             <p className="text-center font-mono text-xs uppercase tracking-widest text-rosa-oscuro">
               Meta de donaciones
             </p>
-            <p className="mt-1 text-center font-display text-4xl text-tinta sm:text-5xl">
-              {campana.meta.porcentaje}%
+            <p className="mt-1 text-center font-display text-2xl leading-tight text-tinta sm:text-3xl">
+              HACHI NECESITA NUESTRA AYUDA
             </p>
 
             <div className="relative mt-5 h-7 w-full overflow-hidden rounded-full border-2 border-tinta/10 bg-hueso sm:h-8">
@@ -68,6 +68,9 @@ export function Hero() {
                 className="h-full rounded-full bg-gradient-to-r from-rosa to-rosa-oscuro transition-[width] duration-700 ease-out"
                 style={{ width: `${Math.min(100, campana.meta.porcentaje)}%` }}
               />
+              <span className="absolute inset-0 flex items-center justify-center font-mono text-xs font-bold text-tinta sm:text-sm">
+                {campana.meta.porcentaje}%
+              </span>
             </div>
             <div className="mt-2 flex justify-between font-mono text-[11px] text-tinta/50 sm:text-xs">
               <span>0%</span>
