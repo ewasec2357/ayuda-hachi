@@ -46,7 +46,7 @@ export function CopyButton({ value, targetRef, className = '' }: CopyButtonProps
     <button
       type="button"
       onClick={handleCopy}
-      className={`inline-flex items-center gap-2 border border-tinta/15 px-4 py-2 font-mono text-sm uppercase tracking-wide text-tinta hover:border-ambar focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ambar focus-visible:ring-offset-2 ${className}`}
+      className={`inline-flex items-center gap-2 rounded border border-tinta/15 px-4 py-2 font-mono text-sm uppercase tracking-wide text-tinta hover:border-ambar focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ambar focus-visible:ring-offset-2 ${className}`}
     >
       <Icon size={16} className={status === 'copied' ? 'text-salvia' : undefined} />
       {label}
