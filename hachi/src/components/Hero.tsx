@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { campana } from '../data/campana';
 import { ClinicalTicker } from './ClinicalTicker';
+import { alTerminarPreloader } from '../lib/preloaderStatus';
 
 export function Hero() {
   const barraRef = useRef<HTMLDivElement>(null);
@@ -10,7 +11,9 @@ export function Hero() {
 
   // Se repite cada vez que la barra vuelve a entrar en pantalla (no solo
   // la primera vez): no desconectamos el observer, solo reflejamos si
-  // está o no visible en este momento.
+  // está o no visible en este momento. Espera a que la pantalla de carga
+  // termine antes de empezar a observar, si no la animación corre
+  // escondida detrás del loader.
   useEffect(() => {
     const node = barraRef.current;
     if (!node) return;
@@ -20,11 +23,18 @@ export function Hero() {
       return;
     }
 
-    const observer = new IntersectionObserver(([entry]) => setBarraVisible(entry.isIntersecting), {
-      threshold: 0.1,
+    let observer: IntersectionObserver | undefined;
+    const cancelarEspera = alTerminarPreloader(() => {
+      observer = new IntersectionObserver(([entry]) => setBarraVisible(entry.isIntersecting), {
+        threshold: 0.1,
+      });
+      observer!.observe(node);
     });
-    observer.observe(node);
-    return () => observer.disconnect();
+
+    return () => {
+      cancelarEspera();
+      observer?.disconnect();
+    };
   }, []);
 
   // El número dentro de la barra cuenta de 0 al porcentaje real, en

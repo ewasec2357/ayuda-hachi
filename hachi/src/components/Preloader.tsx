@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Dog, Loader2 } from 'lucide-react';
+import { marcarPreloaderListo } from '../lib/preloaderStatus';
 
 const SHOW_MS = 2400;
 const FADE_MS = 400;
@@ -15,6 +16,7 @@ export function Preloader() {
     const hideTimer = setTimeout(() => {
       setVisible(false);
       document.body.style.overflow = '';
+      marcarPreloaderListo();
     }, SHOW_MS + FADE_MS);
 
     return () => {
