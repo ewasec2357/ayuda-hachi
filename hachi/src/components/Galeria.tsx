@@ -71,8 +71,8 @@ export function Galeria() {
                 <img
                   src={`${foto.src}.jpg`}
                   alt={foto.alt}
-                  width={1200}
-                  height={1600}
+                  width={foto.src.includes('hachi-07') ? 1600 : 1200}
+                  height={foto.src.includes('hachi-07') ? 1200 : 1600}
                   loading={i === 0 ? undefined : 'lazy'}
                   className="aspect-[3/4] h-full w-full object-cover"
                 />
