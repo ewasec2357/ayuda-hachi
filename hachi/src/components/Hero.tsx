@@ -1,7 +1,33 @@
+import { useEffect, useRef, useState } from 'react';
 import { campana } from '../data/campana';
 import { ClinicalTicker } from './ClinicalTicker';
 
 export function Hero() {
+  const barraRef = useRef<HTMLDivElement>(null);
+  const [barraVisible, setBarraVisible] = useState(false);
+
+  useEffect(() => {
+    const node = barraRef.current;
+    if (!node) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setBarraVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setBarraVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header className="relative overflow-hidden bg-lima-claro px-4 py-10 md:px-8 md:py-16">
       <div className="pointer-events-none absolute -left-16 -top-10 h-48 w-48 bg-rosa-claro blob-1 md:h-64 md:w-64" />
@@ -63,10 +89,13 @@ export function Hero() {
               HACHI NECESITA NUESTRA AYUDA
             </p>
 
-            <div className="relative mt-5 h-7 w-full overflow-hidden rounded-full border-2 border-tinta/10 bg-hueso sm:h-8">
+            <div
+              ref={barraRef}
+              className="relative mt-5 h-7 w-full overflow-hidden rounded-full border-2 border-tinta/10 bg-hueso sm:h-8"
+            >
               <div
-                className="h-full rounded-full bg-gradient-to-r from-rosa to-rosa-oscuro transition-[width] duration-700 ease-out"
-                style={{ width: `${Math.min(100, campana.meta.porcentaje)}%` }}
+                className="h-full rounded-full bg-gradient-to-r from-rosa to-rosa-oscuro transition-[width] duration-[1500ms] ease-out"
+                style={{ width: `${barraVisible ? Math.min(100, campana.meta.porcentaje) : 0}%` }}
               />
               <span className="absolute inset-0 flex items-center justify-center font-mono text-xs font-bold text-tinta sm:text-sm">
                 {campana.meta.porcentaje}%
